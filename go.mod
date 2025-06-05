@@ -1,3 +1,3 @@
 module go-nvidia-gpu-stress
 
-go 1.22.3
+go 1.24.3

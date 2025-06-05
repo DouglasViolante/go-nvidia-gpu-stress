@@ -1,0 +1,12 @@
+package internal
+
+type VRAMType int
+
+const (
+	VRAM_8GB  VRAMType = 25819
+	VRAM_10GB VRAMType = 28867
+	VRAM_12GB VRAMType = 31623
+	VRAM_16GB VRAMType = 36515
+	VRAM_20GB VRAMType = 40825
+	VRAM_24GB VRAMType = 44721
+)

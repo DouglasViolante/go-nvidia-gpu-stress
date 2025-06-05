@@ -1,4 +1,5 @@
 // stress_gpu.cu
+#include "stress_gpu.h"      
 #include <cuda_runtime.h>
 #include <stdio.h>
 #include <stdbool.h>
@@ -22,7 +23,7 @@ extern "C" {
 
 // Runs the stress test loop indefinitely.
 // It allocates three matrices on host and device, and in a loop launches the multiplication kernel.
-void stressCudaLoop(int N) {
+EXPORT void stressCudaLoop(int N) {
     size_t size = N * N * sizeof(float);
     float *A, *B, *C;
     float *d_A, *d_B, *d_C;
@@ -71,7 +72,7 @@ void stressCudaLoop(int N) {
 }
 
 // Function to signal the CUDA loop to stop.
-void stopStressCuda() {
+EXPORT void stopStressCuda() {
     g_running = false;
 }
 

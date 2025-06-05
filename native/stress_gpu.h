@@ -5,14 +5,14 @@
 extern "C" {
 #endif
 
-// Starts the GPU stress test loop.
-// The function launches a CUDA kernel repeatedly on a square matrix of size N x N.
-// The loop continues indefinitely until the stop function is called.
-void stressCudaLoop(int N);
+#ifdef _WIN32
+#define EXPORT __declspec(dllexport)
+#else
+#define EXPORT
+#endif
 
-// Signals the GPU stress test loop to stop.
-// The loop will exit gracefully after the current iteration completes.
-void stopStressCuda();
+EXPORT void stressCudaLoop(int N);
+EXPORT void stopStressCuda();
 
 #ifdef __cplusplus
 }

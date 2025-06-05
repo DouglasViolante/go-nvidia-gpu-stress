@@ -1,15 +1,34 @@
-Compile the CUDA file:
+# go-nvidia-gpu-stress
 
-    nvcc -o stress_gpu.o -c stress_gpu.cu -Xcompiler -fPIC
+    Application to stress a Nvidia GPU with CUDA using GO and C++.  
 
-Create a shared library:
+## How To Run
 
-    nvcc -shared -o libcuda_stress.so stress_gpu.o
+- Compile the CUDA file:
 
-Run the Go program:
+    nvcc -o stress_gpu.obj -c stress_gpu.cu -Xcompiler -fPIC
 
-    go run main.go
+- Create a shared library:
 
+    nvcc -shared -o libstress_gpu.dll stress_gpu.obj -Xcompiler -fPIC
+
+- Run the Go program:
+
+    go run cmd/main.go
+
+- Make sure the files libstress_gpu.dll/exp/lib and stress_gpu.obj were created at cmd/native!
+
+### How to Run Outside the Visual Studio Code
+
+    - Open CMD at the root of the project.
+
+    - Paste so that Windows can find the DLL: 
+        ```set PATH=%CD%\native;%PATH%```
+
+    - Run:
+        ```go run cmd/main.go```
+
+## Memory Sizes
 
 8GB     |   N = 25819
 10GB    |   N = 28867
